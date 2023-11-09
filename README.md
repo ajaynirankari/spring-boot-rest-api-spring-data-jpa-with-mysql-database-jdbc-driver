@@ -13,6 +13,18 @@ MySQL Database setup
    grant all on user_db.* to 'testUser'@'%';
    ```
 
+Spring MySQL configuration from file - src/main/resources/application.properties
+
+```
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/user_db
+spring.datasource.username=testUser
+spring.datasource.password=testUser
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.show-sql=true
+
+```
+
 Steps to Run Application
 1. Open Git Bash
 2. git clone https://github.com/ajaynirankari/spring-boot-rest-api-spring-data-jpa-with-mysql-database-jdbc-driver.git
