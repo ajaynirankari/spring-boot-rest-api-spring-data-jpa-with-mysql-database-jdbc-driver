@@ -1,11 +1,13 @@
 package com.gl.UserManagementApp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,13 +43,13 @@ class UserController {
 
     @GetMapping("/users/{id}")
     public Optional<User> getUserById(@PathVariable Long id) {
-        System.out.println("id = " + id);
+        System.out.println("getUserById id = " + id);
         return userRepository.findById(id);
     }
 
     @PostMapping("/users")
     public User create(@RequestBody User user) {
-        System.out.println("user = " + user);
+        System.out.println("create user = " + user);
         return userRepository.save(user);
     }
 
@@ -79,7 +81,10 @@ class User {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String email;
 
     public User() {
